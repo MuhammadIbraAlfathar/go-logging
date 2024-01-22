@@ -9,7 +9,9 @@ import (
 func TestOutput(t *testing.T) {
 	logger := logrus.New()
 
-	file, _ := os.OpenFile("application.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0666)
+	logger.SetFormatter(&logrus.JSONFormatter{})
+
+	file, _ := os.OpenFile("application.json", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0666)
 
 	logger.SetOutput(file)
 
